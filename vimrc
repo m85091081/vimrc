@@ -1,4 +1,9 @@
+"Somesetting
+"You Need
+"Pathogen / YouCompleteME / airline 
+"Syntastic / Pyflake / tagbar
 "UI_Setting
+let g:syntastic_check_on_wq = 0
 set tabstop=4
 set shiftwidth=4
 set history=1000
@@ -13,9 +18,8 @@ set showmatch
 set cursorline
 filetype plugin indent on
 syntax on
-"Vim_Colorscheme
+"Vim_Colorscheme (Use molokai)
 colorscheme molokai
-let g:molokai_termcolors=256
 set t_Co=256
 hi Normal  ctermfg=252 ctermbg=none
 "Pathogen
@@ -56,20 +60,8 @@ set completeopt-=preview
 let g:ycm_min_num_of_chars_for_completion=1
 let g:ycm_cache_omnifunc=0
 let g:ycm_seed_identifiers_with_syntax=1
-"syntastic 
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_warning_symbol = '⚠'
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 "airline
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'powerlineish'
 let g:airline#extensions#whitespace#enabled = 0
@@ -77,4 +69,24 @@ let g:airline#extensions#syntastic#enabled = 1
 let g:promptline_preset = {
         \'a' : [ promptline#slices#user() ],
         \'b' : [ promptline#slices#cwd() ],
-        \'c' : [ promptline#slices#vcs_branch() ]}
+        \'c' : [ promptline#slices#vcs_branch()]}
+let g:airline_section_a = airline#section#create([''])
+let g:airline_section_b = airline#section#create(['Reimu-Vim'])
+let g:airline_section_c = airline#section#create(['%f','(','filetype',')'])
+let g:airline_section_x = airline#section#create(['ffenc'])
+let g:airline_section_y = airline#section#create([''])
+let g:airline_section_z = airline#section#create_right(['Line:%l','Row:%c'])
+set nofoldenable
+"syntastic 
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_warning_symbol = '⚠'
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_checkers = ['pyflakes']
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+"tagbars
+nmap <F8> :TagbarToggle<CR>
